@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Routing.Constraints;
+using Microsoft.AspNetCore.Routing;
+using UrlsAndRoutes.Infrastructure;
 
 namespace UrlsAndRoutes
 {
@@ -9,6 +12,8 @@ namespace UrlsAndRoutes
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<RouteOptions>(options =>
+                options.ConstraintMap.Add("weekday", typeof(WeekDayConstraint)));
             services.AddMvc();
         }
 
@@ -18,7 +23,7 @@ namespace UrlsAndRoutes
             app.UseStatusCodePages();
             app.UseDeveloperExceptionPage();
             app.UseStaticFiles();
-            app.UseMvc();
+            app.UseMvcWithDefaultRoute();
         }
     }
 }
