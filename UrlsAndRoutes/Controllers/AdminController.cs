@@ -1,10 +1,15 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using UrlsAndRoutes.Models;
+
 namespace UrlsAndRoutes.Controllers
 {
-    public class AdminController
+    public class AdminController : Controller
     {
-        public AdminController()
-        {
-        }
+        public ViewResult Index() => View("Result",
+          new Result
+          {
+              Controller = nameof(AdminController),
+              Action = nameof(Index)
+          });
     }
 }
