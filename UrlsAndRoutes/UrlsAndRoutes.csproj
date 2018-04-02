@@ -11,6 +11,7 @@
     <Folder Include="Views\" />
     <Folder Include="Views\Shared\" />
     <Folder Include="Infrastructure\" />
+    <Folder Include="Views\Legacy\" />
   </ItemGroup>
 
   <ItemGroup>
